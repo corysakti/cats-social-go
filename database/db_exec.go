@@ -8,7 +8,7 @@ import (
 )
 
 func ExecSql() {
-	db := OpenConnection()
+	db := NewDB()
 	defer db.Close()
 
 	ctx := context.Background()
@@ -22,7 +22,7 @@ func ExecSql() {
 }
 
 func QuerySQL() {
-	db := OpenConnection()
+	db := NewDB()
 	defer db.Close()
 
 	ctx := context.Background()
@@ -46,7 +46,7 @@ func QuerySQL() {
 }
 
 func QuerySQLComplex() {
-	db := OpenConnection()
+	db := NewDB()
 	defer db.Close()
 
 	ctx := context.Background()
