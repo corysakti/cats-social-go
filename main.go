@@ -1,14 +1,14 @@
 package main
 
 import (
+	"github.com/corysakti/cats-social-go/config"
 	"github.com/corysakti/cats-social-go/controller"
 	"github.com/corysakti/cats-social-go/database"
-	"github.com/corysakti/cats-social-go/exception"
 	"github.com/corysakti/cats-social-go/helper"
+	"github.com/corysakti/cats-social-go/middleware"
 	"github.com/corysakti/cats-social-go/repository/impl"
 	impl2 "github.com/corysakti/cats-social-go/service/impl"
 	"github.com/go-playground/validator/v10"
-	"github.com/julienschmidt/httprouter"
 	_ "github.com/lib/pq" // PostgreSQL driver
 	"net/http"
 )
@@ -21,19 +21,11 @@ func main() {
 	categoryService := impl2.NewCategoryService(categoryRepository, db, validate)
 	categoryController := controller.NewCategoryController(categoryService)
 
-	router := httprouter.New()
-
-	router.GET("/api/categories", categoryController.FindAll)
-	router.GET("/api/categories/:categoryId", categoryController.FindById)
-	router.POST("/api/categories", categoryController.Create)
-	router.PUT("/api/categories/:categoryId", categoryController.Update)
-	router.DELETE("/api/categories/:categoryId", categoryController.Delete)
-
-	router.PanicHandler = exception.ErrorHandler
+	router := config.NewRouter(categoryController)
 
 	server := http.Server{
 		Addr:    "localhost:8080",
-		Handler: router,
+		Handler: middleware.NewAuthMiddleware(router),
 	}
 
 	err := server.ListenAndServe()
