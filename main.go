@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/corysakti/cats-social-go/controller"
 	"github.com/corysakti/cats-social-go/database"
+	"github.com/corysakti/cats-social-go/exception"
 	"github.com/corysakti/cats-social-go/helper"
 	"github.com/corysakti/cats-social-go/repository/impl"
 	impl2 "github.com/corysakti/cats-social-go/service/impl"
@@ -27,6 +28,8 @@ func main() {
 	router.POST("/api/categories", categoryController.Create)
 	router.PUT("/api/categories/:categoryId", categoryController.Update)
 	router.DELETE("/api/categories/:categoryId", categoryController.Delete)
+
+	router.PanicHandler = exception.ErrorHandler
 
 	server := http.Server{
 		Addr:    "localhost:8080",

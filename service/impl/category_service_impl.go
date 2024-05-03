@@ -3,6 +3,7 @@ package impl
 import (
 	"context"
 	"database/sql"
+	"github.com/corysakti/cats-social-go/exception"
 	"github.com/corysakti/cats-social-go/helper"
 	"github.com/corysakti/cats-social-go/model/entity"
 	"github.com/corysakti/cats-social-go/model/web/request"
@@ -51,9 +52,9 @@ func (service CategoryServiceImpl) Update(ctx context.Context, request request.C
 	helper.PanicIfError(err)
 	defer helper.CommitOrRollback(tx)
 
-	category := entity.Category{
-		Id:   request.Id,
-		Name: request.Name,
+	category, err := service.CategoryRepository.FindById(ctx, tx, request.Id)
+	if err != nil {
+		panic(exception.NewNotFoundError(err.Error()))
 	}
 
 	category = service.CategoryRepository.Update(ctx, tx, category)
@@ -67,6 +68,9 @@ func (service CategoryServiceImpl) Delete(ctx context.Context, categoryId int) {
 	defer helper.CommitOrRollback(tx)
 
 	category, err := service.CategoryRepository.FindById(ctx, tx, categoryId)
+	if err != nil {
+		panic(exception.NewNotFoundError(err.Error()))
+	}
 	helper.PanicIfError(err)
 	service.CategoryRepository.Delete(ctx, tx, category)
 
@@ -78,6 +82,9 @@ func (service CategoryServiceImpl) FindById(ctx context.Context, categoryId int)
 	defer helper.CommitOrRollback(tx)
 
 	category, err := service.CategoryRepository.FindById(ctx, tx, categoryId)
+	if err != nil {
+		panic(exception.NewNotFoundError(err.Error()))
+	}
 	helper.PanicIfError(err)
 
 	return helper.ToCategoryResponse(category)
