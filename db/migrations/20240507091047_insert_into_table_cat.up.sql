@@ -1,0 +1,2 @@
+insert into cat(name, race, sex, age_in_month, description, image_urls) values ('Rodeo', 'Persian','male',1,'Ucink','google.com');
+insert into cat(name, race, sex, age_in_month, description, image_urls) values ('Je', 'Siamese','female',1,'Ucink 2','google.com');

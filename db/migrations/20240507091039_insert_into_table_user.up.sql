@@ -1,0 +1,2 @@
+insert into "user"(email, name, password) values ('by@gmail.com','B', '$2a$12$iAB.B./ikcr0Xt2.idKbw.oX7Eu.jv/sWQOINov7VCHqTs9wVYPl6');
+insert into "user"(email, name, password) values ('yb@gmail.com','BC', '$2a$12$iAB.B./ikcr0Xt2.idKbw.oX7Eu.jv/sWQOINov7VCHqTs9wVYPl6')
