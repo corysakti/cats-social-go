@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/corysakti/cats-social-go/config"
-	"github.com/corysakti/cats-social-go/controller"
+	impl3 "github.com/corysakti/cats-social-go/controller/impl"
 	"github.com/corysakti/cats-social-go/database"
 	"github.com/corysakti/cats-social-go/helper"
 	"github.com/corysakti/cats-social-go/middleware"
@@ -19,7 +19,7 @@ func main() {
 	validate := validator.New()
 	categoryRepository := impl.NewCategoryRepositoryImpl()
 	categoryService := impl2.NewCategoryService(categoryRepository, db, validate)
-	categoryController := controller.NewCategoryController(categoryService)
+	categoryController := impl3.NewCategoryController(categoryService)
 
 	router := config.NewRouter(categoryController)
 

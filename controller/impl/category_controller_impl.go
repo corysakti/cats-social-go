@@ -1,6 +1,7 @@
-package controller
+package impl
 
 import (
+	"github.com/corysakti/cats-social-go/controller"
 	"github.com/corysakti/cats-social-go/helper"
 	request2 "github.com/corysakti/cats-social-go/model/web/request"
 	"github.com/corysakti/cats-social-go/model/web/response"
@@ -14,7 +15,7 @@ type CategoryControllerImpl struct {
 	CategoryService service.CategoryService
 }
 
-func NewCategoryController(categoryService service.CategoryService) CategoryController {
+func NewCategoryController(categoryService service.CategoryService) controller.CategoryController {
 	return &CategoryControllerImpl{
 		CategoryService: categoryService,
 	}

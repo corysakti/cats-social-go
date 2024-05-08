@@ -8,7 +8,7 @@ import (
 )
 
 func NewDB() *sql.DB {
-	db, err := sql.Open("postgres", "postgresql://myuser:secret@localhost:63892/mydatabase?sslmode=disable")
+	db, err := sql.Open("postgres", "postgresql://myuser:secret@localhost:50420/mydatabase?sslmode=disable")
 	helper.PanicIfError(err)
 
 	db.SetMaxIdleConns(10)

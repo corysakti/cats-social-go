@@ -4,11 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"errors"
-	"fmt"
 	"github.com/corysakti/cats-social-go/helper"
 	"github.com/corysakti/cats-social-go/model/entity"
 	"github.com/corysakti/cats-social-go/repository"
-	"strconv"
 )
 
 type CategoryRepositoryImpl struct {
@@ -43,7 +41,6 @@ func (repository CategoryRepositoryImpl) Delete(ctx context.Context, tx *sql.Tx,
 }
 
 func (repository CategoryRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, categoryId int) (entity.Category, error) {
-	fmt.Println("id : " + strconv.Itoa(categoryId))
 	SQL := "select id, name from category where id = $1"
 	rows, err := tx.QueryContext(ctx, SQL, categoryId)
 	helper.PanicIfError(err)

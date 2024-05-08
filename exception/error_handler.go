@@ -8,14 +8,18 @@ import (
 )
 
 func ErrorHandler(writer http.ResponseWriter, request *http.Request, err interface{}) {
-	if notFoundError(writer, request, err) {
-		return
+	switch err := err.(type) {
+	case NotFoundError:
+		notFoundError(writer, request, err)
+	case validator.ValidationErrors:
+		validationErrors(writer, request, err)
+	case AlreadyExistError:
+		alreadyExistError(writer, request, err)
+	case PasswordIsWrongError:
+		passwordIsWrongError(writer, request, err)
+	default:
+		internalServerError(writer, request, err)
 	}
-
-	if validationErrors(writer, request, err) {
-		return
-	}
-	internalServerError(writer, request, err)
 }
 
 func validationErrors(writer http.ResponseWriter, request *http.Request, err interface{}) bool {
@@ -24,10 +28,27 @@ func validationErrors(writer http.ResponseWriter, request *http.Request, err int
 		writer.Header().Set("Content-Type", "application/json")
 		writer.WriteHeader(http.StatusBadRequest)
 
-		responseTemplate := response.ResponseTemplate{
-			Code:   http.StatusBadRequest,
-			Status: "BAD REQUEST",
-			Data:   exception.Error(),
+		responseTemplate := response.DataResponse{
+			Message: "Validation Error!",
+			Data:    exception.Error,
+		}
+
+		helper.WriteToResponseBody(writer, responseTemplate)
+		return true
+	} else {
+		return false
+	}
+}
+
+func passwordIsWrongError(writer http.ResponseWriter, request *http.Request, err interface{}) bool {
+	exception, ok := err.(PasswordIsWrongError)
+	if ok {
+		writer.Header().Set("Content-Type", "application/json")
+		writer.WriteHeader(http.StatusBadRequest)
+
+		responseTemplate := response.DataResponse{
+			Message: "password is wrong",
+			Data:    exception.Error,
 		}
 
 		helper.WriteToResponseBody(writer, responseTemplate)
@@ -43,10 +64,9 @@ func notFoundError(writer http.ResponseWriter, request *http.Request, err interf
 		writer.Header().Set("Content-Type", "application/json")
 		writer.WriteHeader(http.StatusNotFound)
 
-		responseTemplate := response.ResponseTemplate{
-			Code:   http.StatusNotFound,
-			Status: "NOT FOUND",
-			Data:   exception.Error,
+		responseTemplate := response.DataResponse{
+			Message: "Data Not Error!",
+			Data:    exception.Error,
 		}
 
 		helper.WriteToResponseBody(writer, responseTemplate)
@@ -68,4 +88,22 @@ func internalServerError(writer http.ResponseWriter, request *http.Request, err 
 	}
 
 	helper.WriteToResponseBody(writer, responseTemplate)
+}
+
+func alreadyExistError(writer http.ResponseWriter, request *http.Request, err interface{}) bool {
+	exception, ok := err.(AlreadyExistError)
+	if ok {
+		writer.Header().Set("Content-Type", "application/json")
+		writer.WriteHeader(http.StatusNotFound)
+
+		responseTemplate := response.DataResponse{
+			Message: "conflict if email exists",
+			Data:    exception.Error,
+		}
+
+		helper.WriteToResponseBody(writer, responseTemplate)
+		return true
+	} else {
+		return false
+	}
 }
