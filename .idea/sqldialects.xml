@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/db/migrations/20240507085849_create_table_user.up.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/migrations/20240507085853_create_table_user_cat.up.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/db/migrations/20240507091039_insert_into_table_user.up.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/repository/impl/cat_repository_impl.go" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/repository/impl/user_cat_repository_impl.go" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/repository/impl/user_repository_impl.go" dialect="PostgreSQL" />
+  </component>
+</project>

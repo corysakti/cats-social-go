@@ -4,53 +4,21 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e01da716-3784-4b51-be8c-f75f32c6d056" name="Changes" comment="base project + authentication">
-      <change afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/viper.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/authentication_controller.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/impl/authentication_controller_impl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exception/already_exist_error.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exception/password_is_wrong_error.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/entity/cat.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/entity/relation/user_cat_match_relation.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/entity/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/entity/user_cat_match.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/web/request/cat_request.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/web/request/login_register.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/web/request/match_request.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/web/request/register_request.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/web/response/authentication_response.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/web/response/cat_response.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/web/response/data_response.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/web/response/user_cat_matched_response.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/web/response/user_response.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/cat_repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/impl/cat_repository_impl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/impl/user_cat_repository_impl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/impl/user_repository_impl.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/user_cat_match_repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/user_repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/authentication_service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/impl/authentication_service_impl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="e01da716-3784-4b51-be8c-f75f32c6d056" name="Changes" comment="add SQL Migration">
+      <change afterPath="$PROJECT_DIR$/controller/cat_controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/impl/cat_controller_impl.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/helper/helper.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/cat_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/impl/cat_service_impl.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/11c31825-c12a-4d3d-93f9-9df6ebbae7f1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/11c31825-c12a-4d3d-93f9-9df6ebbae7f1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/11c31825-c12a-4d3d-93f9-9df6ebbae7f1/storage_v2/_src_/database/mydatabase.J7NGgg/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/11c31825-c12a-4d3d-93f9-9df6ebbae7f1/storage_v2/_src_/database/mydatabase.J7NGgg/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/11c31825-c12a-4d3d-93f9-9df6ebbae7f1/storage_v2/_src_/database/mydatabase.J7NGgg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/11c31825-c12a-4d3d-93f9-9df6ebbae7f1/storage_v2/_src_/database/mydatabase.J7NGgg/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/11c31825-c12a-4d3d-93f9-9df6ebbae7f1/storage_v2/_src_/database/mydatabase.J7NGgg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/11c31825-c12a-4d3d-93f9-9df6ebbae7f1/storage_v2/_src_/database/mydatabase.J7NGgg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/11c31825-c12a-4d3d-93f9-9df6ebbae7f1/storage_v2/_src_/database/mydatabase.J7NGgg/schema/public.abK9xQ.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/category_controller_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/impl/category_controller_impl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/db_init.go" beforeDir="false" afterPath="$PROJECT_DIR$/database/db_init.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exception/error_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/exception/error_handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/error.go" beforeDir="false" afterPath="$PROJECT_DIR$/helper/error.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/json.go" beforeDir="false" afterPath="$PROJECT_DIR$/helper/json.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware/auth_middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/auth_middleware.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/impl/category_repository_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/impl/category_repository_impl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrations/20240507085853_create_table_user_cat.up.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrations/20240507085853_create_table_user_cat.up.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/entity/relation/user_cat_match_relation.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/entity/relation/user_cat_match_relation.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/impl/cat_repository_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/impl/cat_repository_impl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/impl/user_cat_repository_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/impl/user_cat_repository_impl.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/user_cat_match_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/user_cat_match_repository.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +110,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated" />
     <MESSAGE value="base project + authentication" />
-    <option name="LAST_COMMIT_MESSAGE" value="base project + authentication" />
+    <MESSAGE value="fix handler" />
+    <MESSAGE value="add SQL Migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="add SQL Migration" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

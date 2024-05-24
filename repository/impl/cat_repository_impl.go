@@ -7,6 +7,7 @@ import (
 	"github.com/corysakti/cats-social-go/helper"
 	"github.com/corysakti/cats-social-go/model/entity"
 	"github.com/corysakti/cats-social-go/repository"
+	"time"
 )
 
 type CatRepositoryImpl struct {
@@ -17,9 +18,9 @@ func NewCatRepositoryImpl() repository.CatRepository {
 }
 
 func (repository CatRepositoryImpl) Save(ctx context.Context, tx *sql.Tx, cat entity.Cat) entity.Cat {
-	SQL := "insert into cat(name, race, sex, age_in_month, description, image_urls) values ($1, $2, $3, $4, $5, $6);"
+	SQL := "insert into cat(name, race, sex, age_in_month, description, image_urls, created_at) values ($1, $2, $3, $4, $5, $6, $7);"
 	var id int
-	err := tx.QueryRowContext(ctx, SQL, cat.Name, cat.Race, cat.Sex, cat.AgeInMonth, cat.Description, cat.ImageUrls).Scan(&id)
+	err := tx.QueryRowContext(ctx, SQL, cat.Name, cat.Race, cat.Sex, cat.AgeInMonth, cat.Description, cat.ImageUrls, time.Now().Format(time.RFC3339)).Scan(&id)
 	helper.PanicIfError(err)
 
 	cat.Id = int32(id)

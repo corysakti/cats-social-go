@@ -12,5 +12,6 @@ type UserCatRepository interface {
 	Update(ctx context.Context, tx *sql.Tx, userCat entity.UserCatMatch) entity.UserCatMatch
 	Delete(ctx context.Context, tx *sql.Tx, userCat entity.UserCatMatch)
 	FindById(ctx context.Context, tx *sql.Tx, userCatId int) (relation.UserCatMatchRelation, error)
+	FindByCatId(ctx context.Context, tx *sql.Tx, catId int) (relation.UserCatMatchRelation, error)
 	FindAll(ctx context.Context, tx *sql.Tx) []relation.UserCatMatchRelation
 }

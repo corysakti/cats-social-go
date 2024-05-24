@@ -13,6 +13,7 @@ type UserCatMatchRelation struct {
 	Race        string
 	Sex         string
 	Description string
+	Matched     bool
 	AgeInMonth  int32
 	ImageUrls   string
 	CreatedAt   time.Time

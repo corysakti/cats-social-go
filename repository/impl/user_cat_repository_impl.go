@@ -65,6 +65,30 @@ func (repository UserCatRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx
 	}
 }
 
+func (repository UserCatRepositoryImpl) FindByCatId(ctx context.Context, tx *sql.Tx, catId int) (relation.UserCatMatchRelation, error) {
+	SQL := `select ucm.id, ucm.user_id, ucm.cat_id, c.name, c.race, c.sex, c.description, c.age_in_month, 
+       		c.image_urls, c.created_at,u.email, u.name, u.password
+       		from user_cat_match ucm  
+       		INNER JOIN cat c ON c.id = ucm.cat_id
+       		inner join "user" u on u.id = ucm.user_id
+       		where c.id = $1`
+
+	rows, err := tx.QueryContext(ctx, SQL, catId)
+	helper.PanicIfError(err)
+	defer rows.Close()
+
+	userCatMatch := relation.UserCatMatchRelation{}
+	if rows.Next() {
+		err := rows.Scan(&userCatMatch.Id, &userCatMatch.UserId, &userCatMatch.CatId, &userCatMatch.CatName,
+			&userCatMatch.Race, &userCatMatch.Sex, &userCatMatch.Description, &userCatMatch.AgeInMonth, &userCatMatch.ImageUrls,
+			&userCatMatch.CreatedAt, &userCatMatch.Email, &userCatMatch.UserName, &userCatMatch.Password)
+		helper.PanicIfError(err)
+		return userCatMatch, nil
+	} else {
+		return userCatMatch, errors.New("category is not found")
+	}
+}
+
 func (repository UserCatRepositoryImpl) FindAll(ctx context.Context, tx *sql.Tx) []relation.UserCatMatchRelation {
 	SQL := `select ucm.id, ucm.user_id, ucm.cat_id, c.name, c.race, c.sex, c.description, c.age_in_month, 
        		c.image_urls, c.created_at,u.email, u.name, u.password
